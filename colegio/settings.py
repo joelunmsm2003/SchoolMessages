@@ -26,6 +26,21 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
+
+TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, '../templates'),)
+
+MEDIA_ROOT = os.path.join(PROJECT_PATH, '/var/www/html/')
+
+MEDIA_URL = '/var/www/html/'
+
+STATICFILES_DIRS = (
+    
+    os.path.join(BASE_DIR, "static"),)
+
+
+
+
 
 # Application definition
 
@@ -36,6 +51,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cole',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,6 +63,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 ROOT_URLCONF = 'colegio.urls'
