@@ -12,6 +12,42 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Alumno(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    user = models.ForeignKey('AuthUser', db_column='user')
+    anio = models.ForeignKey('Anio', db_column='anio', blank=True, null=True)
+    periodo = models.ForeignKey('Periodo', db_column='periodo')
+    seccion = models.ForeignKey('Seccion', db_column='seccion', blank=True, null=True)
+    grado = models.ForeignKey('Grado', db_column='grado', blank=True, null=True)
+    niveleducativo = models.ForeignKey('Niveleducativo', db_column='niveleducativo', blank=True, null=True)
+    promedio = models.IntegerField(blank=True, null=True)
+    puesto = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'alumno'
+
+
+class Alumnocurso(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    alumno = models.ForeignKey(Alumno, db_column='alumno', blank=True, null=True)
+    curso = models.ForeignKey('Cursos', db_column='curso', blank=True, null=True)
+    profesor = models.ForeignKey('Profesor', db_column='profesor', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'alumnocurso'
+
+
+class Anio(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'anio'
+
+
 class AuthGroup(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     name = models.CharField(unique=True, max_length=80)
@@ -54,6 +90,8 @@ class AuthUser(models.Model):
     is_staff = models.IntegerField()
     is_active = models.IntegerField()
     date_joined = models.DateTimeField()
+    nivel = models.ForeignKey('Nivel', db_column='nivel', blank=True, null=True)
+    colegio = models.ForeignKey('Colegio', db_column='colegio', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -78,6 +116,28 @@ class AuthUserUserPermissions(models.Model):
     class Meta:
         managed = False
         db_table = 'auth_user_user_permissions'
+
+
+class Colegio(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.CharField(max_length=100, blank=True)
+    direccion = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'colegio'
+
+
+class Cursos(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.CharField(max_length=100, blank=True)
+    niveleducativo = models.IntegerField(blank=True, null=True)
+    grado = models.IntegerField(blank=True, null=True)
+    colegio = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'cursos'
 
 
 class DjangoAdminLog(models.Model):
@@ -125,3 +185,57 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+
+class Grado(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'grado'
+
+
+class Nivel(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'nivel'
+
+
+class Niveleducativo(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'niveleducativo'
+
+
+class Periodo(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'periodo'
+
+
+class Profesor(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    user = models.ForeignKey(AuthUser, db_column='user', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'profesor'
+
+
+class Seccion(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nombre = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'seccion'

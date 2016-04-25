@@ -1,51 +1,8 @@
 
-var module = angular.module("App", ['ngRoute','ngStorage']);
+host = "http://localhost:8000"
 
+module.controller("Login", function($scope,$http,$rootScope,$location,$localStorage) {
 
-module.config(['$routeProvider','$httpProvider',
-
-    function($routeProvider,$httpProvider) {
-
-        $routeProvider.
-
-            when('/', {
-                templateUrl: 'index.html',
-                controller: 'Todo'
-            }).
-
-            when('/nope', {
-                templateUrl: 'nope.html',
-                controller: 'Todo'
-            }).
-
-
-            otherwise({
-                redirectTo: '/queee'
-            });
-
-
-        $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
-        return {
-                'request': function (config) {
-                    config.headers = config.headers || {};
-                    if ($localStorage.token) {
-                        config.headers.Authorization = 'Bearer ' + $localStorage.token;
-                    }
-                    return config;
-                },
-                'responseError': function(response) {
-                    if(response.status === 401 || response.status === 403) {
-                        $location.path('/signin');
-                    }
-                    return $q.reject(response);
-                }
-            };
-        }]);
-
-    }]);
-
-
-module.controller("Todo", function($scope,$http,$rootScope,$location,$localStorage) {
 
 
   function urlBase64Decode(str) {
@@ -99,6 +56,28 @@ module.controller("Todo", function($scope,$http,$rootScope,$location,$localStora
         
         console.log('Decode',currentUser)
 
+        $http.get(host+"/datos/").success(function(response) {$scope.datos = response;
+
+        console.log('datos',$scope.datos.nivel)
+
+        if($scope.datos.nivel==6){
+
+            $location.url("/colegio")
+        }
+        else{
+
+
+            $location.url("/alumno")
+        }
+
+
+            
+        
+
+        });
+
+
+
     
         })
 
@@ -122,32 +101,9 @@ module.controller("Todo", function($scope,$http,$rootScope,$location,$localStora
     }
 
 
-        var jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhOTk1ZDJjYi0yMjY3LTQ0YWUtODAxNi03MjljZTA2YmZmY2EifQ.685gzlezzh7cQ7SU0KYU2G4WXzF_h0F-c55HBYx-ZO8";
-        var tokens = ['limaweekend'];
-        var profile = 'my_first_profile';
-
         // Build the request object
 
-        var datac: {
-        "app_id": '04a4977a',
-        "email": 'joel@gmail.com',
-        "password":'123'
-        
-        }
-
-       $http({
-
-        method: 'POST',
-        url: 'https://api.ionic.io/users',
-        data: datac
-
-        }).
-        success(function(data) {
-        
-          console.log('login',data)
-    
-        })
-
+  
 
         /*
 

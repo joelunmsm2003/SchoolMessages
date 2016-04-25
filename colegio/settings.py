@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import datetime
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -66,6 +67,8 @@ MIDDLEWARE_CLASSES = (
     'corsheaders.middleware.CorsMiddleware',
 )
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'colegio.urls'
 
 WSGI_APPLICATION = 'colegio.wsgi.application'
@@ -104,3 +107,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=30000)

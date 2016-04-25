@@ -1,28 +1,25 @@
-	<ng-include src="'header.html'"></ng-include>	
+  <ng-include src="'header.html'"></ng-include> 
 
-	<div class="container">
+  <div class="container">
 
-	 <table class="table table-condensed table-hover ">
+   <table class="table table-condensed table-hover ">
     
         <tbody>
 
             <thead>
 
-         
-
             <tr>
 
                    <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
                     <th>Nombre <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
-         			<th>Colegio <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
-         			<th>Email  <a ng-click="sort_by('email',currentPage)"><i class="icon-sort"></i></a></th>
-                        
+              <th>Colegio <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                   <th></th>     
 
             </tr>
 
             </thead>
 
- 				 <tfoot>
+         <tfoot>
                     <td colspan="12">
                       <ul class="pagination" ng-repeat="n in toto">
                       <li ng-class="{active: n-1 == currentPage}"><a href="#" ng-click="setPage()">{[{n}]}</a></li>
@@ -32,18 +29,17 @@
                 </tfoot>
 
 
-              <tr   ng-repeat="c in colegios " ts-repeat>
+              <tr   ng-repeat="c in useralumnos " ts-repeat>
 
                 <td>{{c.id}} </td>
-                <td>{{c.nombre}} </td>
-                <td>{{c.direccion}} </td>
+                <td>{{c.first_name}} </td>
+                <td>{{c.colegio__nombre}} </td>
+                <td><a class="btn btn-primary btn-sm" href='#/periodos/{{c.id}}'> Periodos <i class="fa fa-chevron-right"></i></a></td>
                 
       
-                <a class="btn btn-primary btn-sm" ng-click='Admin(contact)'> Administrar <i class="fa fa-chevron-right"></i></a>
                
 
-                </td>
-
+               
 
 
 

@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.conf.urls import patterns
+from cole.views import *
 
 urlpatterns = patterns('',
     # Examples:
@@ -8,12 +10,10 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^api-token-auth/', 'jwt_auth.views.obtain_jwt_token'),
-	url(r'^jwt/$', MockView.as_view()),
-	url(r'^estados/$', Estados.as_view()),
-
-
-
-
-
+	url(r'^datos/$', Datos.as_view()),
+	url(r'^colegios/$', Colegios.as_view()),
+	url(r'^periodos/(\d+)/$', Periodos.as_view()),
+	url(r'^cursos/(\d+)/$', Cursito.as_view()),
+	url(r'^useralumno/$', Useralumno.as_view()),
 
 )

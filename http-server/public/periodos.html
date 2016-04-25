@@ -1,0 +1,84 @@
+	<ng-include src="'header.html'"></ng-include>	
+
+  <ng-include src="'modales.html'"></ng-include>  
+
+	<div class="container">
+
+
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#alumno">Añadir</button>
+
+  <br></br>
+
+	 <table class="table table-condensed table-hover ">
+    
+        <tbody>
+
+            <thead>
+
+            <tr>
+
+
+            <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
+
+            <th>Nombre <a ng-click="sort_by('nombre',currentPage)"><i class="icon-sort"></i></a></th>
+            <th>Nivel Educativo <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            <th>Año <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            <th>Grado <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            <th>Seccion <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            <th>Periodo <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            
+            <th>Promedio <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            <th>Puesto <a ng-click="sort_by('direccion',currentPage)"><i class="icon-sort"></i></a></th>
+            <th></th>    
+
+            </tr>
+
+            </thead>
+
+ 				 <tfoot>
+                    <td colspan="12">
+                      <ul class="pagination" ng-repeat="n in toto">
+                      <li ng-class="{active: n-1 == currentPage}"><a href="#" ng-click="setPage()">{[{n}]}</a></li>
+                      </ul>
+      
+                    </td>
+                </tfoot>
+
+              <tr  ng-repeat="c in periodos " ts-repeat>
+
+                <td>{{c.id}} </td>
+                <td>{{c.user__first_name}} </td>
+                <td>{{c.niveleducativo__nombre}} </td>
+                <td>{{c.anio__nombre}} </td>
+                
+                <td>{{c.grado__nombre}} </td>
+                <td>{{c.seccion__nombre}} </td>
+                <td>{{c.periodo__nombre}} </td>
+            
+             
+                <td>{{c.promedio}} </td>
+                <td>{{c.puesto}} </td>
+
+                
+      
+                <td><a class="btn btn-primary btn-sm" href='#/cursos/{{c.id}}'> Cursos <i class="fa fa-chevron-right"></i></a></td>
+               
+
+                </td>
+
+
+
+
+              </tr>
+
+
+        </tbody>
+
+
+        </table>
+
+
+       </div>
