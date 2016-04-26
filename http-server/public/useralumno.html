@@ -1,7 +1,23 @@
   <ng-include src="'header.html'"></ng-include> 
+    <ng-include src="'modales.html'"></ng-include> 
 
   <div class="container">
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addalumnoind">Individual</button>
+
+         <form action="http://localhost:8000/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+
+        
+        
+              <input type="file" required=""  name="process_file">   
+            
+
+            <button class="btn btn-primary" type="submit">Agregar</button>
+
+            </form>
+           
+     
+<br></br>
    <table class="table table-condensed table-hover ">
     
         <tbody>

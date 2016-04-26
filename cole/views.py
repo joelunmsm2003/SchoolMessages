@@ -5,6 +5,7 @@ from jwt_auth.compat import json
 from jwt_auth.mixins import JSONWebTokenAuthMixin
 from cole.models import *
 import simplejson
+from django.views.decorators.csrf import csrf_exempt
 
 
 class Datos(JSONWebTokenAuthMixin, View):
@@ -109,9 +110,16 @@ class Periodos(JSONWebTokenAuthMixin, View):
 		return HttpResponse(data_json, content_type="application/json")
 
 
-    	
 
+@csrf_exempt
+def uploaduser(request):
+    
+		
+		print  request.FILES['process_file']
+
+		return HttpResponse(data_json, content_type="application/json")
 
 
 def ValuesQuerySetToDict(vqs):
+
     return [item for item in vqs]

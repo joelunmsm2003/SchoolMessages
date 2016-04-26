@@ -80,3 +80,124 @@
 
   </div>
 </div>
+
+<div id="addalumnomas" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Usuario Masivo</h4>
+        </div>
+        <div class="modal-body">
+
+        <div class="row">
+
+         <form action="/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+         <input type="file" class='form-control' required=""  name="process_file">
+
+
+
+        </div>
+        </div>
+
+
+      <div class="modal-footer">
+           <a type="submit" class="btn btn-primary">Aceptar</a>
+      </div>
+
+      </form>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="addalumnoind" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Periodo</h4>
+        </div>
+        <div class="modal-body">
+
+        <div class="row">
+
+        <form ng-submit="saveContact(index,numberPage)">
+
+
+        <div class="col-md-4">
+        <label>Usuario</label>
+        
+        <select ng-model="model.user__first_name" class="form-control" ng-options="data.id as data.user__first_name for data in alumnos" required =""></select>
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+        <label>Nivel Educativo</label>
+        <input type="text" class="form-control" ng-model="model.empresa" required ="" >
+        </div>
+
+        <div class="col-md-4">
+        <label>Año</label>
+        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Periodo</label>
+        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Grado</label>
+        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Seccion</label>
+        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Promedio</label>
+        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Puesto</label>
+        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        </div>
+
+
+
+
+
+</div>
+</div>
+
+
+      <div class="modal-footer">
+           <button type="submit" class="btn btn-primary">Aceptar</button>
+      </div>
+
+      </form>
+
+
+
+    </div>
+
+  </div>
+</div>

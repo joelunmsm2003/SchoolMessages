@@ -15,5 +15,6 @@ urlpatterns = patterns('',
 	url(r'^periodos/(\d+)/$', Periodos.as_view()),
 	url(r'^cursos/(\d+)/$', Cursito.as_view()),
 	url(r'^useralumno/$', Useralumno.as_view()),
+	url(r'^uploaduser/$', 'cole.views.uploaduser'),
 
 )
