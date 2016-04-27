@@ -1,19 +1,22 @@
 Colegio
 =======
 
-Aplicacion web y movil para la educacion en Django y Angular Ionic
+-- Aplicacion web y movil para la educacion en Django y Angular Ionic
 
-Installation
-============
+## Dependencies
 
+- Python
 
--pip install django-jwt-auth
--pip install django-cors-headers
-
--mkdir myapp
--cd vistas
--jitsu install http-server
--sudo pip install python-firebase
+### Installation
 
 
--node bin/http-server
+- pip install django-jwt-auth
+- pip install django-cors-headers
+
+mkdir myapp
+cd vistas
+jitsu install http-server
+sudo pip install python-firebase
+
+
+node bin/http-server
