@@ -27,37 +27,37 @@
 
         <div class="col-md-4">
         <label>Nivel Educativo</label>
-        <input type="text" class="form-control" ng-model="model.empresa" required ="" >
+        <input type="text" class="form-control" ng-model="model.empresa" >
         </div>
 
         <div class="col-md-4">
         <label>Año</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <input type="text" class="form-control" ng-model="model.nivel"  >
         </div>
 
         <div class="col-md-4">
         <label>Periodo</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <input type="text" class="form-control" ng-model="model.nivel"  >
         </div>
 
         <div class="col-md-4">
         <label>Grado</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <input type="text" class="form-control" ng-model="model.nivel"  >
         </div>
 
         <div class="col-md-4">
         <label>Seccion</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <input type="text" class="form-control" ng-model="model.nivel"  >
         </div>
 
         <div class="col-md-4">
         <label>Promedio</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <input type="text" class="form-control" ng-model="model.nivel"  >
         </div>
 
         <div class="col-md-4">
         <label>Puesto</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <input type="text" class="form-control" ng-model="model.nivel"  >
         </div>
 
 
@@ -81,7 +81,10 @@
   </div>
 </div>
 
-<div id="addalumnomas" class="modal fade" role="dialog">
+
+
+
+<div id="individual" class="modal fade" role="dialog">
 
   <div class="modal-dialog modal-lg">
 
@@ -89,111 +92,103 @@
 
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Usuario Masivo</h4>
+        <h4 class="modal-title">Agregar Usuario</h4>
         </div>
         <div class="modal-body">
 
         <div class="row">
 
-         <form action="/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
-         <input type="file" class='form-control' required=""  name="process_file">
-
-
-
-        </div>
-        </div>
-
-
-      <div class="modal-footer">
-           <a type="submit" class="btn btn-primary">Aceptar</a>
-      </div>
-
-      </form>
-
-
-
-    </div>
-
-  </div>
-</div>
-
-
-
-<div id="addalumnoind" class="modal fade" role="dialog">
-
-  <div class="modal-dialog modal-lg">
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Periodo</h4>
-        </div>
-        <div class="modal-body">
-
-        <div class="row">
-
-        <form ng-submit="saveContact(index,numberPage)">
+        <form ng-submit="usersave(model)">
 
 
         <div class="col-md-4">
         <label>Usuario</label>
         
-        <select ng-model="model.user__first_name" class="form-control" ng-options="data.id as data.user__first_name for data in alumnos" required =""></select>
+        <input type="text" class="form-control" ng-model="model.username" >
 
-        </div>
-
-
-
-
-        <div class="col-md-4">
-        <label>Nivel Educativo</label>
-        <input type="text" class="form-control" ng-model="model.empresa" required ="" >
         </div>
 
         <div class="col-md-4">
-        <label>Año</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <label>Password</label>
+        <input type="password" class="form-control" ng-model="model.password" >
         </div>
 
         <div class="col-md-4">
-        <label>Periodo</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <label>Apellido Paterno</label>
+        <input type="text" class="form-control" ng-model="model.first_name"  >
         </div>
 
         <div class="col-md-4">
-        <label>Grado</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <label>Apellido Materno</label>
+        <input type="text" class="form-control" ng-model="model.last_name"  >
         </div>
 
         <div class="col-md-4">
-        <label>Seccion</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <label>Nombres</label>
+        <input type="text" class="form-control" ng-model="model.nombres"  >
         </div>
 
         <div class="col-md-4">
-        <label>Promedio</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <label>Email</label>
+        <input type="text" class="form-control" ng-model="model.email"  >
         </div>
 
         <div class="col-md-4">
-        <label>Puesto</label>
-        <input type="text" class="form-control" ng-model="model.nivel" required =""  >
+        <label>Nivel</label>
+        <select ng-model="model.nivel" class="form-control" ng-options="data.id as data.nombre for data in niveles" required =""></select>
         </div>
+
+        <div class="col-md-4">
+        <label>Colegio</label>
+        <select ng-model="model.colegio" class="form-control" ng-options="data.id as data.nombre for data in colegios" required =""></select>
+        
+        </div>
+
+
+        <div class="col-md-4">
+        <label>DNI</label>
+        <input type="text" class="form-control" ng-model="model.dni"  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Direccion</label>
+        <input type="text" class="form-control" ng-model="model.direccion"  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Distrito</label>
+        <input type="text" class="form-control" ng-model="model.distrito"  >
+        </div>
+
+        <div class="col-md-4">
+        <label>Telefono</label>
+        <input type="text" class="form-control" ng-model="model.telefono"  >
+        </div>
+        <br></br>
+
+        <div class="col-md-4">
+       
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+
+
+    
+
 
 
 
 
 
 </div>
+
+
+
 </div>
 
 
-      <div class="modal-footer">
-           <button type="submit" class="btn btn-primary">Aceptar</button>
-      </div>
 
-      </form>
+
+      
 
 
 
@@ -201,3 +196,47 @@
 
   </div>
 </div>
+
+
+<div id="masivo" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Usuario Masivamente</h4>
+        </div>
+        <div class="modal-body">
+
+        <div class="row file">
+<form action="http://localhost:8000/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+
+        
+        
+              <input type="file" required=""  name="process_file">   <br>
+            <button type="submit"  class="btn btn-primary" >Agregar </button> 
+
+          </form>
+
+
+</div>
+</div>
+
+
+   
+
+
+    </div>
+
+  </div>
+</div>
+
+<style type="text/css">
+    .file{
+          padding: 20px;
+    }
+
+
+</style>

@@ -1,17 +1,21 @@
 from django.views.generic import View
 from django.http import HttpResponse
-
+from django.contrib.auth.models import Group, User
 from jwt_auth.compat import json
 from jwt_auth.mixins import JSONWebTokenAuthMixin
 from cole.models import *
 import simplejson
 from django.views.decorators.csrf import csrf_exempt
+import xlrd
 
 
 class Datos(JSONWebTokenAuthMixin, View):
     def get(self, request):
 
     	id = request.user.id
+
+    	print 'User....',id
+    	print Alumno.objects.all()
     	user = AuthUser.objects.get(id=id)
     	nivel = user.nivel.id
     	nivel_nombre = user.nivel.nombre
@@ -21,6 +25,75 @@ class Datos(JSONWebTokenAuthMixin, View):
         data = json.dumps({'first_name':first_name,'username': request.user.username,'id':id,'nivel':nivel,'nivel_nombre':nivel_nombre,'colegio':colegio})
         return HttpResponse(data)
 
+
+class Colegios(JSONWebTokenAuthMixin, View):
+    def get(self, request):
+
+		data =  Colegio.objects.all().values('id','nombre','direccion')
+
+		data_dict = ValuesQuerySetToDict(data)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
+
+class Adduser(JSONWebTokenAuthMixin, View):
+    def post(self, request):
+
+		print json.loads(request.body)
+
+		dato = json.loads(request.body)['dato']
+		username = dato['username']
+		password = dato['password']
+		nivel = dato['nivel']
+		first_name = dato['first_name']
+		last_name = dato['last_name']
+		nombres = dato['nombres']
+		distrito = dato['distrito']
+		direccion = dato['direccion']
+		dni =dato['dni']
+		colegio = dato['colegio']
+		email= dato['email']
+		telefono = dato['telefono']
+
+		user = User.objects.create_user(username=username,password=password)
+		user.save()
+
+		id_user = AuthUser.objects.all().values('id').order_by('-id')[0]['id']
+
+		usuario = AuthUser.objects.get(id=id_user)
+		usuario.username = username
+		usuario.password = password
+		usuario.first_name = first_name
+		usuario.last_name = last_name
+		usuario.nombres = nombres
+		usuario.email = email
+		usuario.nivel_id = nivel
+		usuario.dni = dni
+		usuario.direccion = direccion
+		usuario.distrito = distrito
+		usuario.colegio_id = colegio
+
+		usuario.telefono = telefono
+		usuario.save()
+
+		data_json = simplejson.dumps('data_dict')
+
+		return HttpResponse(data_json, content_type="application/json")
+
+
+
+class Niveles(JSONWebTokenAuthMixin, View):
+    def get(self, request):
+
+		data =  Nivel.objects.all().values('id','nombre')
+
+		data_dict = ValuesQuerySetToDict(data)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
 
 class Colegios(JSONWebTokenAuthMixin, View):
     def get(self, request):
@@ -88,7 +161,7 @@ class Useralumno(JSONWebTokenAuthMixin, View):
 
 		if nivel == 6: #Manager
 
-			data =  AuthUser.objects.filter(nivel_id=3).values('id','first_name','colegio__nombre','email')
+			data =  AuthUser.objects.filter(nivel_id=3).values('id','is_superuser','first_name','last_name','nombres','email','nivel__nombre','colegio','dni','direccion','distrito').order_by('-id')
 
 
 		data_dict = ValuesQuerySetToDict(data)
@@ -96,6 +169,10 @@ class Useralumno(JSONWebTokenAuthMixin, View):
 		data_json = simplejson.dumps(data_dict)
 
 		return HttpResponse(data_json, content_type="application/json")
+
+
+
+		
 
 
 class Periodos(JSONWebTokenAuthMixin, View):
@@ -113,11 +190,92 @@ class Periodos(JSONWebTokenAuthMixin, View):
 
 @csrf_exempt
 def uploaduser(request):
-    
-		
-		print  request.FILES['process_file']
 
-		return HttpResponse(data_json, content_type="application/json")
+   
+		filex = request.FILES['process_file']
+
+		Excel(file=filex).save()
+
+		id_excel = Excel.objects.all().values('id').order_by('-id')[0]['id']
+
+		archivo = Excel.objects.get(id=id_excel).file
+
+		ruta = '/var/www/html/'+str(archivo)
+
+		book = xlrd.open_workbook(ruta)
+
+		sh = book.sheet_by_index(0)
+
+		u=[]
+
+		i=0
+
+		for rx in range(sh.nrows):
+
+			if rx > 0:
+
+				u=[]
+
+				ui=0
+
+				users = User.objects.all()
+
+				for col in range(sh.ncols):
+
+					x = str(sh.row(rx)[col]).replace('text:u','').replace('number:','').replace("'","").replace('.0','')
+
+					u.append(x)
+
+				username =u[0]
+				password =u[1]
+				appaterno = u[2]
+				apmaterno = u[3]
+				nombres = u[4]
+				email = u[5]
+				nivel =u[6]
+				dni = u[7]
+				direccion = u[8]
+				distrito = u[9]
+				fnacimiento =u[10]
+				telefono = u[11]
+
+				for users in users:
+
+					if username == users.username:
+
+						ui = 1
+
+				if ui == 0:
+
+					i = i+1
+
+					user = User.objects.create_user(username=username,password=password)
+					user.save()
+
+					id_user = AuthUser.objects.all().values('id').order_by('-id')[0]['id']
+
+					usuario = AuthUser.objects.get(id=id_user)
+					usuario.username = username
+					usuario.password = password
+					usuario.first_name = appaterno
+					usuario.last_name = apmaterno
+					usuario.nombres = nombres
+					usuario.email = email
+					usuario.nivel_id = nivel
+					usuario.dni = dni
+					usuario.direccion = direccion
+					usuario.distrito = distrito
+					
+					usuario.telefono = telefono
+					usuario.save()
+
+
+			
+
+			
+
+
+		return HttpResponse(i, content_type="application/json")
 
 
 def ValuesQuerySetToDict(vqs):

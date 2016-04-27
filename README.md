@@ -1,6 +1,7 @@
-Tu Papi System Cole 
-====================
+Hey!
+====
 
+Aplicacion web y movil para la educacion en Django y Angular Ionic
 
 Installation
 ============

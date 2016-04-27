@@ -3,18 +3,11 @@
 
   <div class="container">
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addalumnoind">Individual</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#individual">Individual</button>
 
-         <form action="http://localhost:8000/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#masivo">Masivo</button>
 
-        
-        
-              <input type="file" required=""  name="process_file">   
-            
-
-            <button class="btn btn-primary" type="submit">Agregar</button>
-
-            </form>
+         
            
      
 <br></br>
@@ -26,10 +19,21 @@
 
             <tr>
 
-                   <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
-                    <th>Nombre <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
-              <th>Colegio <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
-                   <th></th>     
+                  <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Apellido Paterno <a ng-click="sort_by('last_login',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Apellido Materno <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Nombres <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Email <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Nivel <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Colegio <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>DNI <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Direccion <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Distrito <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  <th>Fecha Nacimiento <a ng-click="sort_by('colegio__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+                  
+
+
+                  <th></th>     
 
             </tr>
 
@@ -47,9 +51,22 @@
 
               <tr   ng-repeat="c in useralumnos " ts-repeat>
 
+
+
+      
                 <td>{{c.id}} </td>
                 <td>{{c.first_name}} </td>
-                <td>{{c.colegio__nombre}} </td>
+                <td>{{c.last_name}} </td>
+                <td>{{c.nombres}} </td>
+                <td>{{c.email}} </td>
+                <td>{{c.nivel__nombre}} </td>
+                <td>{{c.colegio}} </td>
+                <td>{{c.dni}} </td>
+                <td>{{c.direccion}} </td>
+                <td>{{c.distrito}} </td>
+                <td>{{c.fnacimiento}} </td>
+              
+
                 <td><a class="btn btn-primary btn-sm" href='#/periodos/{{c.id}}'> Periodos <i class="fa fa-chevron-right"></i></a></td>
                 
       
@@ -69,3 +86,26 @@
 
 
        </div>
+
+
+ <style type="text/css">
+
+            [type='file'] {
+              -webkit-appearance: none;
+              
+              color: rgb(63, 86, 161);
+            }
+            [type='file']::-webkit-file-upload-button {
+              border-radius: 3px;
+              border: 0;
+              background: rgb(51, 122, 183);
+              color: white;
+              padding: 7px;
+              font-family: 'Open Sans', sans-serif;
+            }
+            [type='file']::-webkit-file-upload-button:active, [type='file']::-webkit-file-upload-button:focus {
+              outline: 0;
+            }
+
+            </style>
+     

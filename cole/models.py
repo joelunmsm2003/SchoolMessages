@@ -86,12 +86,17 @@ class AuthUser(models.Model):
     username = models.CharField(unique=True, max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    nombres = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=75)
     is_staff = models.IntegerField()
     is_active = models.IntegerField()
     date_joined = models.DateTimeField()
     nivel = models.ForeignKey('Nivel', db_column='nivel', blank=True, null=True)
     colegio = models.ForeignKey('Colegio', db_column='colegio', blank=True, null=True)
+    dni = models.CharField(max_length=100, blank=True)
+    direccion = models.CharField(max_length=100, blank=True)
+    distrito = models.CharField(max_length=100, blank=True)
+    fnacimiento = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -126,6 +131,15 @@ class Colegio(models.Model):
     class Meta:
         managed = False
         db_table = 'colegio'
+
+
+class CorsheadersCorsmodel(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    cors = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'corsheaders_corsmodel'
 
 
 class Cursos(models.Model):
@@ -187,6 +201,15 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class Excel(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    file = models.FileField(upload_to='files')
+
+    class Meta:
+        managed = False
+        db_table = 'excel'
+
+
 class Grado(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     nombre = models.CharField(max_length=100, blank=True)
@@ -234,7 +257,7 @@ class Profesor(models.Model):
 
 class Seccion(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
-    nombre = models.IntegerField(blank=True, null=True)
+    nombre = models.CharField(max_length=100, blank=True)
 
     class Meta:
         managed = False

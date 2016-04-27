@@ -1,5 +1,5 @@
 
-var module = angular.module("App", ['ngRoute','ngStorage']);
+var module = angular.module("App", ['ngRoute','ngStorage','ngCookies']);
 
 
 
