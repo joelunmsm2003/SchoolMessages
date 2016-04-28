@@ -1,10 +1,10 @@
-	<ng-include src="'header.html'"></ng-include>	
+  <ng-include src="'header.html'"></ng-include> 
 
-	<div class="container">
+  <div class="container">
 
-  <h4>Colegios</h4>
+  <h4>Alumnos de la seccion {{alumnosdata.seccion__nombre}}</h4>
 
-	 <table class="table table-condensed table-hover ">
+   <table class="table table-condensed table-hover ">
     
         <tbody>
 
@@ -16,15 +16,14 @@
 
               <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
               <th>Nombre <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
-              <th>Direccion <a ng-click="sort_by('nivel__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+              <th>Promedio <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
               <th></th>
-
 
             </tr>
 
             </thead>
 
- 				 <tfoot>
+         <tfoot>
                     <td colspan="12">
                       <ul class="pagination" ng-repeat="n in toto">
                       <li ng-class="{active: n-1 == currentPage}"><a href="#" ng-click="setPage()">{[{n}]}</a></li>
@@ -33,16 +32,16 @@
                     </td>
                 </tfoot>
 
-
-              <tr   ng-repeat="c in colegios " ts-repeat>
+              <tr   ng-repeat="c in alumnos " ts-repeat>
 
                 <td>{{c.id}} </td>
-                <td>{{c.nombre}} </td>
-                <td>{{c.direccion}} </td>
+                <td>{{c.user__first_name}} </td>
+                 <td>{{c.promedio}} </td>
+                
              
                 
       
-                <td><a class="btn btn-primary btn-sm" href='#/niveleducativo/{{c.id}}'> Niveles Educativos <i class="fa fa-chevron-right"></i></td>
+                <td><a class="btn btn-primary btn-sm" href="#/cursos/{{c.id}}/{{seccion}}/{{grado}}/{{nivel}}/{{colegio}}"> Cursos <i class="fa fa-chevron-right"></i></td>
                
 
                 </td>

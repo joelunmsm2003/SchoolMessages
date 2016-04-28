@@ -22,9 +22,6 @@
 
         </div>
 
-
-
-
         <div class="col-md-4">
         <label>Nivel Educativo</label>
         <input type="text" class="form-control" ng-model="model.empresa" >
@@ -104,33 +101,33 @@
         <div class="col-md-4">
         <label>Usuario</label>
         
-        <input type="text" class="form-control" ng-model="model.username" >
+        <input type="text" class="form-control" ng-model="model.username" required="" >
 
         </div>
 
         <div class="col-md-4">
         <label>Password</label>
-        <input type="password" class="form-control" ng-model="model.password" >
+        <input type="password" class="form-control" ng-model="model.password" required="" >
         </div>
 
         <div class="col-md-4">
         <label>Apellido Paterno</label>
-        <input type="text" class="form-control" ng-model="model.first_name"  >
+        <input type="text" class="form-control" ng-model="model.first_name" required="" >
         </div>
 
         <div class="col-md-4">
         <label>Apellido Materno</label>
-        <input type="text" class="form-control" ng-model="model.last_name"  >
+        <input type="text" class="form-control" ng-model="model.last_name" required="" >
         </div>
 
         <div class="col-md-4">
         <label>Nombres</label>
-        <input type="text" class="form-control" ng-model="model.nombres"  >
+        <input type="text" class="form-control" ng-model="model.nombres" required="" >
         </div>
 
         <div class="col-md-4">
         <label>Email</label>
-        <input type="text" class="form-control" ng-model="model.email"  >
+        <input type="text" class="form-control" ng-model="model.email" required="" >
         </div>
 
         <div class="col-md-4">
@@ -147,24 +144,25 @@
 
         <div class="col-md-4">
         <label>DNI</label>
-        <input type="text" class="form-control" ng-model="model.dni"  >
+        <input type="text" class="form-control" ng-model="model.dni" required=""  >
         </div>
 
         <div class="col-md-4">
         <label>Direccion</label>
-        <input type="text" class="form-control" ng-model="model.direccion"  >
+        <input type="text" class="form-control" ng-model="model.direccion" required="" >
         </div>
 
         <div class="col-md-4">
         <label>Distrito</label>
-        <input type="text" class="form-control" ng-model="model.distrito"  >
+        <input type="text" class="form-control" ng-model="model.distrito" required="" >
         </div>
 
         <div class="col-md-4">
         <label>Telefono</label>
-        <input type="text" class="form-control" ng-model="model.telefono"  >
+        <input type="text" class="form-control" ng-model="model.telefono" required="" >
         </div>
         <br></br>
+        <hr>
 
         <div class="col-md-4">
        
@@ -198,40 +196,45 @@
 </div>
 
 
-<div id="masivo" class="modal fade" role="dialog">
+<!--Modal-->
 
-  <div class="modal-dialog modal-lg">
 
-    <div class="modal-content">
+<div id="masivo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Usuario Masivamente</h4>
-        </div>
-        <div class="modal-body">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Agregar Audiencia</h3>
+            </div>
 
-        <div class="row file">
-<form action="http://localhost:8000/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+            <div class="modal-body">
 
+            
+            <form action="http://localhost:8000/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+
+
+           
+              <input type="file" required=""  name="process_file">  
+
+
+            </div>
+            
+            <div class="modal-footer">
+            <button class="btn" data-dismiss="modal">Cerrar</button>
+            <button class="btn btn-primary" type="submit">Agregar</button>
+            </form>
+     
         
+            </div>
+            
+            
         
-              <input type="file" required=""  name="process_file">   <br>
-            <button type="submit"  class="btn btn-primary" >Agregar </button> 
-
-          </form>
-
-
-</div>
-</div>
-
-
-   
-
-
     </div>
 
-  </div>
-</div>
+   
+    
+
+
+
 
 <style type="text/css">
     .file{

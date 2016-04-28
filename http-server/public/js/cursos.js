@@ -3,7 +3,7 @@
 module.controller("Cursos", function($scope,$http,$routeParams,$rootScope,$location,$localStorage) {
 
 
-alumno = $routeParams.alumno
+$scope.alumno = $routeParams.alumno
 
 
 
@@ -14,7 +14,7 @@ $http.get(host+"/datos/").success(function(response) {$scope.user = response;
 });
 
 
-$http.get(host+"/cursos/"+alumno+'/').success(function(response) {$scope.cursos = response;
+$http.get(host+"/cursos/"+$scope.alumno+'/').success(function(response) {$scope.cursos = response;
 
     console.log('cursos',$scope.cursos)
    
