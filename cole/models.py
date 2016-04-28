@@ -213,7 +213,7 @@ class DjangoSession(models.Model):
 
 class Excel(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
-    file = models.CharField(max_length=1000, blank=True)
+    file = models.FileField(upload_to='files')
 
     class Meta:
         managed = False
