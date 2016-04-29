@@ -35,16 +35,16 @@
               <tr   ng-repeat="c in alumnos " ts-repeat>
 
                 <td>{{c.id}} </td>
+                
                 <td>{{c.user__first_name}} </td>
-                 <td>{{c.promedio}} </td>
-                
-             
-                
-      
-                <td><a class="btn btn-primary btn-sm" href="#/cursos/{{c.id}}/{{seccion}}/{{grado}}/{{nivel}}/{{colegio}}"> Cursos <i class="fa fa-chevron-right"></i></td>
+                <td>{{c.promedio}} </td>
+
+
+
+                <td><a class="btn btn-primary btn-sm" href='#/periodos/{{c.user}}'> Periodos <i class="fa fa-chevron-right"></i></a></td>
                
 
-                </td>
+              
 
 
 

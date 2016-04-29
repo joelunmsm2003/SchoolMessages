@@ -131,7 +131,7 @@ class Useralumno(JSONWebTokenAuthMixin, View):
 
 		if nivel == 1: #Director
 
-			data =  AuthUser.objects.filter(colegio_id=colegio,nivel_id=3).values('id','first_name','colegio__nombre','email')
+			data =  AuthUser.objects.filter(colegio_id=colegio).values('id','first_name','colegio__nombre','email')
 		
 		if nivel == 2: #Profesor
 
@@ -149,19 +149,19 @@ class Useralumno(JSONWebTokenAuthMixin, View):
 
 		if nivel == 3: #Alumno
 
-			data =  AuthUser.objects.filter(colegio_id=colegio,nivel_id=3).values('id','first_name','colegio__nombre','email')
+			data =  AuthUser.objects.filter(colegio_id=colegio).values('id','first_name','colegio__nombre','email')
 
 		if nivel == 4: #Secretario
 
-			data =  AuthUser.objects.filter(colegio_id=colegio,nivel_id=3).values('id','first_name','colegio__nombre','email')
+			data =  AuthUser.objects.filter(colegio_id=colegio).values('id','first_name','colegio__nombre','email')
 
 		if nivel == 5: #Admin
 
-			data =  AuthUser.objects.filter(colegio_id=colegio,nivel_id=3).values('id','first_name','colegio__nombre','email')
+			data =  AuthUser.objects.filter(colegio_id=colegio).values('id','first_name','colegio__nombre','email')
 
 		if nivel == 6: #Manager
 
-			data =  AuthUser.objects.filter(nivel_id=3).values('id','is_superuser','first_name','last_name','nombres','email','nivel__nombre','colegio','dni','direccion','distrito').order_by('-id')
+			data =  AuthUser.objects.all().values('id','is_superuser','first_name','last_name','nombres','email','nivel__nombre','colegio','dni','direccion','distrito').order_by('-id')
 
 
 		data_dict = ValuesQuerySetToDict(data)
@@ -216,7 +216,7 @@ class Alumnoseccion(JSONWebTokenAuthMixin, View):
 		seccion = data['seccion']
 		colegio = data['colegio']
     
-		data =  Alumno.objects.filter(niveleducativo_id=niveleducativo,grado_id=grado,seccion_id=seccion,user__colegio=colegio).values('id','user__first_name','grado__nombre','seccion__nombre','niveleducativo__nombre','user__colegio__nombre','promedio','puesto')
+		data =  Alumno.objects.filter(niveleducativo_id=niveleducativo,grado_id=grado,seccion_id=seccion,user__colegio=colegio).values('id','user__first_name','grado__nombre','seccion__nombre','niveleducativo__nombre','user__colegio__nombre','promedio','puesto','user')
 
 		data_dict = ValuesQuerySetToDict(data)
 
