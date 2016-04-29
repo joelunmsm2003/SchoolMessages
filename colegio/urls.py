@@ -14,9 +14,14 @@ urlpatterns = patterns('',
 	url(r'^colegios/$', Colegios.as_view()),
 	url(r'^periodos/(\d+)/$', Periodos.as_view()),
 	url(r'^cursos/(\d+)/$', Cursito.as_view()),
+	url(r'^colegionivel/(\d+)/$', Colegionivelx.as_view()),
+	url(r'^secciongrado/(\d+)/$', Secciongradox.as_view()),
+	url(r'^nivelgrado/(\d+)/$', Nivelgradox.as_view()),
+	url(r'^alumnoseccion/$', Alumnoseccion.as_view()),
 	url(r'^useralumno/$', Useralumno.as_view()),
 	url(r'^niveles/$', Niveles.as_view()),
 	url(r'^uploaduser/$', 'cole.views.uploaduser'),
 	url(r'^adduser/$', Adduser.as_view()),
+
 
 )

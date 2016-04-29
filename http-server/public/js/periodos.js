@@ -3,7 +3,7 @@
 module.controller("Periodo", function($scope,$http,$routeParams,$rootScope,$location,$localStorage) {
 
 
-alumnouser = $routeParams.alumno
+$scope.alumnouser = $routeParams.alumno
 
 
 $http.get(host+"/colegios/").success(function(response) {$scope.colegios = response;
@@ -19,7 +19,7 @@ $http.get(host+"/datos/").success(function(response) {$scope.user = response;
 });
 
 
-$http.get(host+"/periodos/"+alumnouser+'/').success(function(response) {$scope.periodos = response;
+$http.get(host+"/periodos/"+$scope.alumnouser+'/').success(function(response) {$scope.periodos = response;
 
     console.log('periodos',$scope.periodos)
    

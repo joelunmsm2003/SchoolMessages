@@ -26,6 +26,22 @@ module.config(['$routeProvider','$httpProvider',
                 templateUrl: 'periodos.html',
                 controller: 'Periodo'
             }).
+            when('/niveleducativo/:colegio', {
+                templateUrl: 'niveleducativo.html',
+                controller: 'Niveleducativo'
+            }).
+            when('/grados/:nivel/:colegio', {
+                templateUrl: 'grado.html',
+                controller: 'Grado'
+            }).
+            when('/secciones/:grado/:nivel/:colegio', {
+                templateUrl: 'seccion.html',
+                controller: 'Seccion'
+            }).
+            when('/alumnos/:seccion/:grado/:nivel/:colegio', {
+                templateUrl: 'alumno.html',
+                controller: 'Alumno'
+            }).
             when('/cursos/:alumno', {
                     templateUrl: 'cursos.html',
                     controller: 'Cursos'

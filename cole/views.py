@@ -172,8 +172,6 @@ class Useralumno(JSONWebTokenAuthMixin, View):
 
 
 
-		
-
 
 class Periodos(JSONWebTokenAuthMixin, View):
     def get(self, request,user):
@@ -186,10 +184,67 @@ class Periodos(JSONWebTokenAuthMixin, View):
 
 		return HttpResponse(data_json, content_type="application/json")
 
+class Colegionivelx(JSONWebTokenAuthMixin, View):
+    def get(self,request,colegio):
+    
+		data =  Colegionivel.objects.filter(colegio_id=colegio).values('id','colegio__nombre','nivel__nombre','colegio')
+
+		data_dict = ValuesQuerySetToDict(data)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
+class Nivelgradox(JSONWebTokenAuthMixin, View):
+    def get(self,request,nivel):
+    
+		data =  Nivelgrado.objects.filter(nivel_id=nivel).values('id','grado__nombre','nivel__nombre')
+
+		data_dict = ValuesQuerySetToDict(data)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
+class Alumnoseccion(JSONWebTokenAuthMixin, View):
+    def post(self,request):
+
+
+		data = json.loads(request.body)
+		niveleducativo = data['nivel']
+		grado = data['grado']
+		seccion = data['seccion']
+		colegio = data['colegio']
+    
+		data =  Alumno.objects.filter(niveleducativo_id=niveleducativo,grado_id=grado,seccion_id=seccion,user__colegio=colegio).values('id','user__first_name','grado__nombre','seccion__nombre','niveleducativo__nombre','user__colegio__nombre','promedio','puesto')
+
+		data_dict = ValuesQuerySetToDict(data)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
+
+
+class Secciongradox(JSONWebTokenAuthMixin, View):
+    def get(self,request,grado):
+    
+		data =  Gradoseccion.objects.filter(grado_id=grado).values('id','seccion__nombre','grado__nombre')
+
+		data_dict = ValuesQuerySetToDict(data)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
+
 
 
 @csrf_exempt
 def uploaduser(request):
+
+
+		print request.FILES['process_file']
 
    
 		filex = request.FILES['process_file']

@@ -3,11 +3,40 @@
 
   <div class="container">
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#individual">Individual</button>
+  <div class='row'>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#masivo">Masivo</button>
+<div class="col-md-2">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#individual">Agregar Usuario</button>
 
-         
+</div>
+<div class="col-md-10">
+
+
+<form action="http://localhost:8000/uploaduser/" method="post"  role="form" enctype="multipart/form-data">
+
+             <div class='row'>
+
+            <div class="col-md-4">
+              <input type="file" required=""  name="process_file">
+             </div>
+
+             <div class="col-md-8">
+
+
+             <button type="submit"  class="btn btn-primary" ><i class="fa fa-upload" aria-hidden="true"></i>
+
+             </div> 
+
+             </div>
+
+
+             </button> 
+
+          </form>
+
+          </div>
+
+          </div>
            
      
 <br></br>
@@ -68,14 +97,7 @@
               
 
                 <td><a class="btn btn-primary btn-sm" href='#/periodos/{{c.id}}'> Periodos <i class="fa fa-chevron-right"></i></a></td>
-                
-      
-               
-
-               
-
-
-
+                           
               </tr>
 
 

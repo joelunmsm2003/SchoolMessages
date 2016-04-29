@@ -2,7 +2,7 @@
 
 	<div class="container">
 
-  <h4>Colegios</h4>
+  <h4>Grados Educativos del Nivel {{gradodata.nivel__nombre}}</h4>
 
 	 <table class="table table-condensed table-hover ">
     
@@ -15,8 +15,7 @@
             <tr>
 
               <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
-              <th>Nombre <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
-              <th>Direccion <a ng-click="sort_by('nivel__nombre',currentPage)"><i class="icon-sort"></i></a></th>
+              <th>Grado Educativo <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
               <th></th>
 
 
@@ -34,15 +33,15 @@
                 </tfoot>
 
 
-              <tr   ng-repeat="c in colegios " ts-repeat>
+              <tr   ng-repeat="c in grados " ts-repeat>
 
                 <td>{{c.id}} </td>
-                <td>{{c.nombre}} </td>
-                <td>{{c.direccion}} </td>
+                <td>{{c.grado__nombre}} </td>
+                
              
                 
       
-                <td><a class="btn btn-primary btn-sm" href='#/niveleducativo/{{c.id}}'> Niveles Educativos <i class="fa fa-chevron-right"></i></td>
+                <td><a class="btn btn-primary btn-sm" href="#/secciones/{{c.id}}/{{nivel}}/{{colegio}}"> Secciones <i class="fa fa-chevron-right"></i></td>
                
 
                 </td>

@@ -133,6 +133,16 @@ class Colegio(models.Model):
         db_table = 'colegio'
 
 
+class Colegionivel(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    colegio = models.ForeignKey(Colegio, db_column='colegio', blank=True, null=True)
+    nivel = models.ForeignKey('Niveleducativo', db_column='nivel', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'colegionivel'
+
+
 class CorsheadersCorsmodel(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     cors = models.CharField(max_length=255)
@@ -219,6 +229,16 @@ class Grado(models.Model):
         db_table = 'grado'
 
 
+class Gradoseccion(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    grado = models.ForeignKey(Grado, db_column='grado', blank=True, null=True)
+    seccion = models.ForeignKey('Seccion', db_column='seccion', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'gradoseccion'
+
+
 class Nivel(models.Model):
     id = models.IntegerField(primary_key=True)  # AutoField?
     nombre = models.CharField(max_length=100, blank=True)
@@ -235,6 +255,16 @@ class Niveleducativo(models.Model):
     class Meta:
         managed = False
         db_table = 'niveleducativo'
+
+
+class Nivelgrado(models.Model):
+    id = models.IntegerField(primary_key=True)  # AutoField?
+    nivel = models.ForeignKey(Niveleducativo, db_column='nivel', blank=True, null=True)
+    grado = models.ForeignKey(Grado, db_column='grado', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'nivelgrado'
 
 
 class Periodo(models.Model):
