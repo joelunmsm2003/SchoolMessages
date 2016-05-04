@@ -16,11 +16,6 @@ $http.get(host+"/datos/").success(function(response) {$scope.user = response;
 });
 
 
-$http.get(host+"/alumnos/").success(function(response) {$scope.alumnos = response;
-
-    console.log('alumnos',$scope.alumnos)
-   
-});
 
 
 $http.get(host+"/useralumno/").success(function(response) {$scope.useralumnos = response;
@@ -72,6 +67,44 @@ $http.get(host+"/niveles/").success(function(response) {$scope.niveles = respons
         
         
         }
+
+
+
+    $scope.addcolegio = function (data) {
+
+        console.log('data',data)
+
+          $('#colegio').modal('hide')
+        $('.modal-backdrop').remove();
+
+
+
+        $http({
+
+        url: host+"/addcolegio/",
+        data: data,
+        method: 'POST'
+
+        }).
+        success(function(data) {
+
+            //swal({  title: 'Colegio '+data+' ingresado ',  type: "success",  timer: 1200,   showConfirmButton: false });
+
+
+
+            $http.get(host+"/colegios/").success(function(response) {$scope.colegios = response;
+
+                console.log('colegios',$scope.colegios)
+               
+            });
+
+
+
+        })
+
+        
+        }
+
 
 
 

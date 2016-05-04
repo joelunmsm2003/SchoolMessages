@@ -98,13 +98,70 @@ class Niveles(JSONWebTokenAuthMixin, View):
 class Colegios(JSONWebTokenAuthMixin, View):
     def get(self, request):
 
-		data =  Colegio.objects.all().values('id','nombre','direccion')
+		data =  Colegio.objects.all().values('id','nombre','direccion').order_by('-id')
 
 		data_dict = ValuesQuerySetToDict(data)
 
 		data_json = simplejson.dumps(data_dict)
 
 		return HttpResponse(data_json, content_type="application/json")
+
+	
+class Addcolegio(JSONWebTokenAuthMixin, View):
+	def post(self, request):
+
+		data = json.loads(request.body)
+
+		#{u'nombre': u'Santa Isabel', u'direccion': u'Huancayo'}
+
+		nombre = data['nombre']
+		direccion = data['direccion']
+
+		data=Colegio(nombre=nombre,direccion=direccion).save()
+
+		data_dict = ValuesQuerySetToDict(nombre)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
+class Addniveleducativo(JSONWebTokenAuthMixin, View):
+	def post(self, request):
+
+		data = json.loads(request.body)
+		dato = data['dato']
+
+		print '......',dato
+
+		colegio =data['colegio']
+
+		nivel = ['inicial','primaria','secundaria']
+
+
+		if dato['inicial'] == True:
+
+			Colegionivel(nivel_id=1,colegio_id=colegio).save()
+
+
+
+
+		if dato['primaria'] == True:
+
+			Colegionivel(nivel_id=2,colegio_id=colegio).save()
+		
+
+		if dato['secundaria'] == True:
+
+			Colegionivel(nivel_id=3,colegio_id=colegio).save()
+		
+	
+
+		data_dict = ValuesQuerySetToDict(colegio)
+
+		data_json = simplejson.dumps(data_dict)
+
+		return HttpResponse(data_json, content_type="application/json")
+
 
 
 
@@ -187,7 +244,7 @@ class Periodos(JSONWebTokenAuthMixin, View):
 class Colegionivelx(JSONWebTokenAuthMixin, View):
     def get(self,request,colegio):
     
-		data =  Colegionivel.objects.filter(colegio_id=colegio).values('id','colegio__nombre','nivel__nombre','colegio')
+		data =  Colegionivel.objects.filter(colegio_id=colegio).values('id','colegio__nombre','nivel__nombre','colegio','nivel')
 
 		data_dict = ValuesQuerySetToDict(data)
 

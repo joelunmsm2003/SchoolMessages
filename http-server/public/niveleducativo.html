@@ -1,8 +1,13 @@
-	<ng-include src="'header.html'"></ng-include>	
-
+  <ng-include src="'header.html'"></ng-include> 
+    <ng-include src="'modales.html'"></ng-include> 
+    
 	<div class="container">
 
   <h4>Niveles Educativos del Colegio {{niveldata.colegio__nombre}}</h4>
+
+    <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#niveleducativo"> Nivel Educativo <i class="fa fa-plus"></i></a>
+
+    <br></br>
 
 	 <table class="table table-condensed table-hover ">
     
@@ -35,14 +40,12 @@
 
               <tr   ng-repeat="c in niveles " ts-repeat>
 
-                <td>{{c.id}} </td>
+                <td> {{c.nivel}} </td>
                 <td>{{c.nivel__nombre}} </td>
+                 
 
-                
-             
-                
       
-                <td><a class="btn btn-primary btn-sm" href="#/grados/{{c.id}}/{{c.colegio}}"> Grados <i class="fa fa-chevron-right"></i></td>
+                <td><a class="btn btn-primary btn-sm" href="#/grados/{{c.nivel}}/{{c.colegio}}"> Grados <i class="fa fa-chevron-right"></i></td>
                
 
                 </td>

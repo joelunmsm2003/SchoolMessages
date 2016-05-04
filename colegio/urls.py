@@ -22,6 +22,9 @@ urlpatterns = patterns('',
 	url(r'^niveles/$', Niveles.as_view()),
 	url(r'^uploaduser/$', 'cole.views.uploaduser'),
 	url(r'^adduser/$', Adduser.as_view()),
+	url(r'^addcolegio/$', Addcolegio.as_view()),
+	url(r'^addniveleducativo/$', Addniveleducativo.as_view()),
+
 
 
 )

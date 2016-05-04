@@ -230,10 +230,151 @@
         
     </div>
 
+
+
+
+<!--Modal-->
+
+
+
+<div id="colegio" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-sm">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Colegio</h4>
+        </div>
+        <div class="modal-body">
+
+        <div class="row">
+
+        <form ng-submit="addcolegio(model)">
+
+
+        <div class="col-md-12">
+        <label>Nombre</label>
+        
+        <input type="text" class="form-control" ng-model="model.nombre" required="" >
+
+        </div>
+
+        <div class="col-md-12">
+        <label>Direccion</label>
+        <input type="text" class="form-control" ng-model="model.direccion" required="" >
+        </div>
+
+        <div class="col-md-4">
+        <br></br>
+       
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
    
-    
+    <!--Modal-->
+
+<div id="secciones" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-sm">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Seccion</h4>
+        </div>
+        <div class="modal-body">
+
+        <div class="row">
+
+        <form ng-submit="addcolegio(model)">
 
 
+        <div class="col-md-12">
+        <label>Seccion</label>
+        
+        <input type="text" class="form-control" ng-model="model.nombre" required="" >
+
+        </div>
+
+       
+        <div class="col-md-4">
+        <br></br>
+       
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+   <!--Modal-->
+
+<div id="niveleducativo" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-sm">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Nivel Educativo</h4>
+        </div>
+        <div class="modal-body">
+
+        <div class="row">
+
+        <form ng-submit="addniveleducativo(model)">
+
+
+        <div class="col-md-12">
+        <label>Inicial</label>
+        
+        <input type="checkbox"  ng-model="model.inicial"  >
+
+        </div>
+
+        <div class="col-md-12">
+        <label>Primaria</label>
+        <input type="checkbox"  ng-model="model.primaria"  >
+        </div>
+
+        <div class="col-md-12">
+        <label>Secundaria</label>
+        <input type="checkbox" ng-model="model.secundaria" >
+        </div>
+
+        <div class="col-md-4">
+        <br>
+       
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
 
 
 <style type="text/css">

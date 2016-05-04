@@ -1,8 +1,13 @@
-	<ng-include src="'header.html'"></ng-include>	
+  <ng-include src="'header.html'"></ng-include> 
+    <ng-include src="'modales.html'"></ng-include> 
 
 	<div class="container">
 
   <h4>Colegios</h4>
+
+  <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#colegio"> Colegio <i class="fa fa-plus"></i></a>
+
+  <br></br>
 
 	 <table class="table table-condensed table-hover ">
     
@@ -10,15 +15,12 @@
 
             <thead>
 
-         
-
             <tr>
 
               <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
               <th>Nombre <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
               <th>Direccion <a ng-click="sort_by('nivel__nombre',currentPage)"><i class="icon-sort"></i></a></th>
               <th></th>
-
 
             </tr>
 
@@ -34,7 +36,7 @@
                 </tfoot>
 
 
-              <tr   ng-repeat="c in colegios " ts-repeat>
+              <tr ng-repeat="c in colegios " ts-repeat>
 
                 <td>{{c.id}} </td>
                 <td>{{c.nombre}} </td>

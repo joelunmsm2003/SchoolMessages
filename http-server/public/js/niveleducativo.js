@@ -21,6 +21,8 @@ $http.get(host+"/colegionivel/"+$scope.colegio+"/").success(function(response) {
 
 
 
+
+
     $scope.usersave = function (data) {
 
     	console.log('data',data)
@@ -42,17 +44,58 @@ $http.get(host+"/colegionivel/"+$scope.colegio+"/").success(function(response) {
         }).
         success(function(data) {
 
-        	swal({  title: 'Usuario ingresado ',  type: "success",  timer: 1200,   showConfirmButton: false });
+            swal({  title: 'Usuario ingresado ',  type: "success",  timer: 1200,   showConfirmButton: false });
 
-        	$http.get(host+"/useralumno/").success(function(response) {$scope.useralumnos = response;
+            $http.get(host+"/useralumno/").success(function(response) {$scope.useralumnos = response;
 
-    console.log('alumnos user',$scope.useralumnos)
-   
-});
+            console.log('alumnos user',$scope.useralumnos)
 
+            });
+
+        })
+        
+        
+        }
+
+
+
+
+
+    $scope.addniveleducativo = function (data) {
+
+        console.log('data',data)
+
+        var todo={
+
+            colegio: $scope.colegio,
+            dato: data
+          
+        }
+
+
+        $http({
+
+        url: host+"/addniveleducativo/",
+        data: todo,
+        method: 'POST'
+ 
+        }).
+        success(function(data) {
+
+            //swal({  title: 'Nivel ingresado ',  type: "success",  timer: 1200,   showConfirmButton: false });
+
+            $http.get(host+"/colegionivel/"+$scope.colegio+"/").success(function(response) {$scope.niveles = response;
+
+            console.log('niveles',$scope.niveles,$scope.colegios)
+
+            $scope.niveldata = $scope.niveles[0]
+
+            });
 
 
         })
+
+
         
         
         }

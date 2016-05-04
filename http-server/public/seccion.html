@@ -1,8 +1,14 @@
   <ng-include src="'header.html'"></ng-include> 
+  <ng-include src="'modales.html'"></ng-include> 
+
 
   <div class="container">
 
   <h4>Secciones Educativas del {{secciondata.grado__nombre}} Grado</h4>
+
+   <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#secciones"> Secciones <i class="fa fa-plus"></i></a>
+
+   <br></br>
 
    <table class="table table-condensed table-hover ">
     
@@ -16,6 +22,7 @@
 
               <th>Id <a ng-click="sort_by('id',currentPage)"><i class="icon-sort"></i></a></th>
               <th>Seccion <a ng-click="sort_by('first_name',currentPage)"><i class="icon-sort"></i></a></th>
+              <th></th>
               <th></th>
 
 
@@ -41,10 +48,11 @@
              
                 
       
-                <td><a class="btn btn-primary btn-sm" href="#/alumnos/{{c.id}}/{{grado}}/{{nivel}}/{{colegio}}"> Alumnos <i class="fa fa-chevron-right"></i></td>
-               
+                <td><a class="btn btn-primary btn-sm" href="#/alumnos/{{c.id}}/{{grado}}/{{nivel}}/{{colegio}}"> Alumnos <i class="fa fa-chevron-right"></i></a>
 
-                </td>
+               <a class="btn btn-primary btn-sm" href="#/alumnos/{{c.id}}/{{grado}}/{{nivel}}/{{colegio}}"> Consolidado <i class="fa fa-chevron-right"></i></a></td>
+         
+
 
 
 
